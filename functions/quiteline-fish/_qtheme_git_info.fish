@@ -1,4 +1,4 @@
-function _qtheme:git-get-info \
+function _qtheme_git_info \
 --description "Produce 'BRANCH STAGED CHANGED UNTRACKED BEHIND AHEAD DIVERGED STASHED CONFLICTS CLEAN'"
     set branch (
         command git branch --show-current 2>/dev/null ||
@@ -6,7 +6,8 @@ function _qtheme:git-get-info \
         command git rev-parse --short HEAD 2>/dev/null |
             string replace --regex -- '(.+)' '@\$1'
     )
-    test -z $branch and return 0
+    test -z $branch
+    and return 0
 
     # 변수 초기화 (순서: STAGED, CHANGED, UNTRACKED, BEHIND, AHEAD, DIVERGED, STASHED, CONFLICTS, CLEAN)
     set -l count_staged 0
