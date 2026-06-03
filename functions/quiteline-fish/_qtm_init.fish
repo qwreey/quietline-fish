@@ -27,7 +27,6 @@ function _qtm_init
 			$_qtm_hook_onprompt[$i]
 		end
 	end
-
 	function _qtm:on_pwd --on-variable PWD
 		set -g _qtm_pwd_parent_dirs (_qtm_parent_dirs "$PWD")
 		for i in (seq (count $_qtm_hook_onpwd))
@@ -38,6 +37,9 @@ function _qtm_init
 
 	source (functions --details _qtm:on_init)
 	_qtm:on_init
+	functions --query _qtm:on_init_user
+	and _qtm:on_init_user
+	_qtm:on_init_prompt
 	_qtm:on_pwd
 	_qtm:on_prompt
 end
