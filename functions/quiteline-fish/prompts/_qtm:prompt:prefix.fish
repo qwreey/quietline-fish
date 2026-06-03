@@ -1,7 +1,5 @@
 function _qtm:prompt:prefix; argparse --max-args 0 \
-	'content=' \
-	'prompt_root=' \
-	'prompt_nonroot=' \
+	'content=' 'prompt_root=' 'prompt_nonroot=' \
 -- $argv || return
 	echo "name   =prefix"
 	echo "render =_qtm:prompt:prefix:render"

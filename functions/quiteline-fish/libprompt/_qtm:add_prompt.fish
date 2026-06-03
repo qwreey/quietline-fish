@@ -21,20 +21,20 @@ function _qtm:add_prompt
 	end
 
 	set --global "_qtm_isenabled_$name"
-	if test -n $render
-		set --append _qtm_hook_render $render
-		set --append _qtm_hook_render_nsenter $namespace_enter
+	if test -n "$render"
+		set --append _qtm_hook_render "$render"
+		set --append _qtm_hook_render_nsenter "$namespace_enter"
 	end
-	if test -n $on_exit
-		set --append _qtm_hook_onexit $on_exit
-		set --append _qtm_hook_onexit_nsenter $namespace_enter
+	if test -n "$on_exit"
+		set --append _qtm_hook_onexit "$on_exit"
+		set --append _qtm_hook_onexit_nsenter "$namespace_enter"
 	end
-	if test -n $on_prompt
-		set --append _qtm_hook_onprompt $on_prompt
-		set --append _qtm_hook_onprompt_nsenter $namespace_enter
+	if test -n "$on_prompt"
+		set --append _qtm_hook_onprompt "$on_prompt"
+		set --append _qtm_hook_onprompt_nsenter "$namespace_enter"
 	end
-	if test -n $on_pwd
-		set --append _qtm_hook_onprompt $on_pwd
-		set --append _qtm_hook_onprompt_nsenter $namespace_enter
+	if test -n "$on_pwd"
+		set --append _qtm_hook_onpwd "$on_pwd"
+		set --append _qtm_hook_onpwd_nsenter "$namespace_enter"
 	end
 end

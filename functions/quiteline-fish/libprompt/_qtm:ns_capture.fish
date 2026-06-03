@@ -14,7 +14,7 @@ function _qtm:ns_capture \
 			and set -l value "$$split[1]"
 			or  set -l value "$split[2]"
 
-			set var_setter "$var_setter""set -f $split[1] $(string escape "$value");"
+			set var_setter "$var_setter""set -f $split[1] $(string escape -- "$value");"
 		end
 		set execute "$_flag_execute"
 	end
@@ -34,7 +34,7 @@ function _qtm:ns_capture \
 		)
 		set -l flag_setter ""
 		for flag in $flag_names
-			set flag_setter "$flag_setter""set -f $flag $(string escape "$$flag");"
+			set flag_setter "$flag_setter""set -f $flag $(string escape -- "$$flag");"
 		end
 
 		eval "function _qtm:nsenter_$id --no-scope-shadowing;$flag_setter$var_setter$execute;end"

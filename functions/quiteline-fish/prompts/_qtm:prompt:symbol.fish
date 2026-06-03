@@ -1,6 +1,5 @@
 function _qtm:prompt:symbol; argparse --min-args 1 \
-	'content-color=?' \
-	'topline-color=?' \
+	'content-color=?' 'topline-color=?' \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_topline_color

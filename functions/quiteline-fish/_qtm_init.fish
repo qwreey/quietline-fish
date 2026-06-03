@@ -35,9 +35,9 @@ function _qtm_init
 			$_qtm_hook_onpwd[$i]
 		end
 	end
-	_qtm:on_pwd
 
 	source (functions --details _qtm:on_init)
 	_qtm:on_init
+	_qtm:on_pwd
 	_qtm:on_prompt
 end
