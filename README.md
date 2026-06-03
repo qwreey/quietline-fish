@@ -1,1 +1,1 @@
-Fully pluggable
+Extream fast and fully pluggable fish theme
