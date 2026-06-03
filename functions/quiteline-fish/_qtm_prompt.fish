@@ -5,9 +5,7 @@ function _qtm_prompt
 	_qtm_init
 	_qtm:clear
 	for i in (seq (count $_qtm_hook_render))
-		set -l nsenter $_qtm_hook_render_nsenter[$i]
-		test -n "$nsenter"
-		and eval "$nsenter"
+		set --global _qtm_nsenter $_qtm_hook_render_nsenter[$i]
 		$_qtm_hook_render[$i]
 	end
 	_qtm:render

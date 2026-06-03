@@ -15,6 +15,7 @@ function _qtm:add_prompt
 			case render; set render $v
 			case on_exit; set on_exit $v
 			case on_prompt; set on_prompt $v
+			case on_pwd; set on_pwd $v
 			case namespace_enter; set namespace_enter $v
 		end
 	end
@@ -30,6 +31,10 @@ function _qtm:add_prompt
 	end
 	if test -n $on_prompt
 		set --append _qtm_hook_onprompt $on_prompt
+		set --append _qtm_hook_onprompt_nsenter $namespace_enter
+	end
+	if test -n $on_pwd
+		set --append _qtm_hook_onprompt $on_pwd
 		set --append _qtm_hook_onprompt_nsenter $namespace_enter
 	end
 end
