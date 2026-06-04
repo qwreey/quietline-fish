@@ -2,6 +2,7 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 	'dirname-color=?' \
 	'slash-color=?' \
 	'topline-color=?' \
+	'short-length=?'
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_topline_color
@@ -10,6 +11,8 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 	or set -l _flag_dirname_color "$_qtm_color_symbol_default"
 	set --query -l _flag_slash_color
 	or set -l _flag_slash_color "$_qtm_color_symbol_default"
+	set --query -l _flag_short_length
+	or set -l _flag_short_length 1
 
 	echo "name   =pwd"
 	echo "render =_qtm:prompt:pwd:render"
@@ -52,8 +55,6 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 			set git_root_inhome 0
 		end
 
-		set -l short_level 1
-
 		set --global $result "$_flag_dirname_color"
 		for i in (seq 2 $path_depth)
 			set -l current
@@ -63,14 +64,14 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 			else if test $i = $path_depth
 				# Show full name for last dirname
 				set current "$path_split[$i]"
-			else if test $short_level = 1
+			else if test $_flag_short_length = 1
 				# Push one char short name, but if starts with . show two char
 				set -l short "$(string sub --length 1 "$path_split[$i]")"
 				test "$short" = '.'
 				and set -l short "$(string sub --length 2 "$path_split[$i]")"
 				set current "$short"
 			else
-				set current "$(string sub --length $short_level "$path_split[$i]")"
+				set current "$(string sub --length $_flag_short_length "$path_split[$i]")"
 			end
 
 			# Push without / if ~ home sign

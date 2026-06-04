@@ -27,7 +27,8 @@ function _qtm:on_init
 			--err-suffix=" " \
 			--ok-content="ok! " \
 			--hide-ok \
-			--status-joiner="|"
+			--status-joiner="|" \
+			--short-length=1
 		)
 		# Exit code explain
 		_qtm:add_prompt (_qtm:prompt:exitmean \
