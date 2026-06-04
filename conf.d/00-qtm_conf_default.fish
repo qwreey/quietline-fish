@@ -28,7 +28,7 @@ function _qtm:on_init
 			--ok-content="ok! " \
 			--hide-ok \
 			--status-joiner="|" \
-			--short-length=1
+			--short-length=3
 		)
 		# Exit code explain
 		_qtm:add_prompt (_qtm:prompt:exitmean \

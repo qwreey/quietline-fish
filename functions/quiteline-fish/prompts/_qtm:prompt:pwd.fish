@@ -12,7 +12,7 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 	set --query -l _flag_slash_color
 	or set -l _flag_slash_color "$_qtm_color_symbol_default"
 	set --query -l _flag_short_length
-	or set -l _flag_short_length 1
+	or set -l _flag_short_length 3
 
 	echo "name   =pwd"
 	echo "render =_qtm:prompt:pwd:render"
