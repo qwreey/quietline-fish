@@ -1,5 +1,5 @@
 function _qtm:prompt:ssh; argparse --min-args 1 \
-	'symbol=?' 'notsymbol=?' \
+	'symbol=*' 'notsymbol=*' \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_symbol

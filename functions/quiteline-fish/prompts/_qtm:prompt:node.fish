@@ -1,6 +1,6 @@
 function _qtm:prompt:node; argparse --max-args 0 \
-	'topline-color=?' 'content-color=?' \
-	'prefix=?' 'suffix=?' \
+	'topline-color=*' 'content-color=*' \
+	'prefix=*' 'suffix=*' \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_topline_color

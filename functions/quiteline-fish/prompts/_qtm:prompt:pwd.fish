@@ -1,10 +1,10 @@
 function _qtm:prompt:pwd; argparse --max-args 0 \
-	'dirname-color=?' \
-	'slash-color=?' \
-	'topline-color=?' \
-	'short-length=?' \
+	'dirname-color=*' 'slash-color=*' \
+	'topline-color=*' 'short-length=*' \
+	'prefix=*' 'prefix-topline-color=*' \
+	'suffix=*' 'suffix-topline-color=*' \
 -- $argv || return
-	# Flag defaults
+	# Flag 
 	set --query -l _flag_topline_color
 	or set -l _flag_topline_color "$_qtm_color_topline_default"
 	set --query -l _flag_dirname_color
@@ -13,6 +13,14 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 	or set -l _flag_slash_color "$_qtm_color_symbol_default"
 	set --query -l _flag_short_length
 	or set -l _flag_short_length 3
+	set --query -l _flag_prefix
+	or set -l _flag_prefix ""
+	set --query -l _flag_prefix_topline_color
+	or set -l _flag_prefix_topline_color ""
+	set --query -l _flag_suffix
+	or set -l _flag_suffix " "
+	set --query -l _flag_suffix_topline_color
+	or set -l _flag_suffix_topline_color "$_qtm_color_topline_default"
 
 	echo "name   =pwd"
 	echo "render =_qtm:prompt:pwd:render"
@@ -22,7 +30,9 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 	)
 
 	function _qtm:prompt:pwd:render; $_qtm_nsenter
+		_qtm:put "$_flag_prefix_topline_color" "$_flag_prefix"
 		_qtm:put "$_flag_topline_color" "$$result"
+		_qtm:put "$_flag_suffix_topline_color" "$_flag_suffix"
 	end
 
 	function _qtm:prompt:pwd:homecut
@@ -81,6 +91,6 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 				set --global $result "$$result$creset$_flag_slash_color/$creset$_flag_dirname_color$current"
 			end
 		end
-		set --global $result "$$result "
+		set --global $result "$$result"
 	end
 end

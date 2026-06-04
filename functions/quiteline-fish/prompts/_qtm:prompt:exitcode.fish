@@ -1,10 +1,7 @@
 function _qtm:prompt:exitcode; argparse \
-	'content-color=?' \
-	'err-prefix=?' \
-	'err-suffix=?' \
-	'ok-content=?' \
-	'hide-ok' \
-	'status-joiner=?' \
+	'content-color=*' 'err-prefix=*' \
+	'err-suffix=*' 'ok-content=*' \
+	'hide-ok' 'status-joiner=*' \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_content_color

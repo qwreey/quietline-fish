@@ -1,8 +1,8 @@
 function _qtm:prompt:git; argparse --max-args 0 \
 	'content-color=' 'topline-color=' 'lbrace=' \
 	'lbrace_topcolor=' 'rbrace=' 'rbrace_topcolor=' \
-	'staged=?' 'changed=?' 'untracked=?' 'behind=?' \
-	'ahead=?' 'diverged=?' 'stashed=?' 'conflicts=?' \
+	'staged=*' 'changed=*' 'untracked=*' 'behind=*' \
+	'ahead=*' 'diverged=*' 'stashed=*' 'conflicts=*' \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_topline_color

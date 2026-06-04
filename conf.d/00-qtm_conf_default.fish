@@ -16,9 +16,9 @@ function _qtm:on_init
 	function _qtm:on_init_prompt
 		# Front vertical line and $ prompt sign
 		_qtm:add_prompt (_qtm:prompt:prefix \
-			--content        "$_qtm_color_prefix_line▍ " \
-			--prompt_root    "$_qtm_color_prefix_line▍""$_qtm_color_prompt_sign""# " \
-			--prompt_nonroot "$_qtm_color_prefix_line▍""$_qtm_color_prompt_sign""\$ "
+			--content="$_qtm_color_prefix_line▍ " \
+			--prompt_root="$_qtm_color_prefix_line▍""$_qtm_color_prompt_sign""# " \
+			--prompt_nonroot="$_qtm_color_prefix_line▍""$_qtm_color_prompt_sign""\$ "
 		)
 		# Exit code
 		_qtm:add_prompt (_qtm:prompt:exitcode \
@@ -39,7 +39,7 @@ function _qtm:on_init
 		# Stopwatch for last executed command
 		_qtm:add_prompt (_qtm:prompt:duration \
 			--content-color="$(set_color '#FFFF00')" \
-			--prefix "" \
+			--prefix \
 			--suffix=" taken " \
 			--decimals=0 \
 			--threshold-ms=10000
@@ -65,7 +65,11 @@ function _qtm:on_init
 			--dirname-color="$(set_color --bold '#698eff')" \
 			--slash-color="$(set_color '#5373d4')" \
 			--topline-color="$(set_color '#5F5FFF')" \
-			--short-length=3
+			--short-length=3 \
+			--suffix=" " \
+			--suffix-topline-color="$_qtm_color_topline_default" \
+			--prefix \
+			--prefix-topline-color
 		)
 		# Show nodejs version
 		_qtm:add_prompt (_qtm:prompt:node \
@@ -77,10 +81,10 @@ function _qtm:on_init
 		_qtm:add_prompt (_qtm:prompt:git \
 			--content-color="$(set_color '#D2EC59')" \
 			--topline-color="$(set_color '#C7E155')" \
-			--lbrace "$_qtm_color_symbol_default"'['"$(set_color --reset)" \
-			--lbrace_topcolor "$_qtm_color_topline_default" \
-			--rbrace "$_qtm_color_symbol_default"']'"$(set_color --reset)" \
-			--rbrace_topcolor "$_qtm_color_topline_default" \
+			--lbrace="$_qtm_color_symbol_default"'['"$(set_color --reset)" \
+			--lbrace_topcolor="$_qtm_color_topline_default" \
+			--rbrace="$_qtm_color_symbol_default"']'"$(set_color --reset)" \
+			--rbrace_topcolor="$_qtm_color_topline_default" \
 			--staged="+" --changed="!" --untracked="?" \
 			--behind="↓" --ahead="↑" --diverged="" \
 			--stashed="*" --conflicts="#"

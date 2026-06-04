@@ -1,8 +1,6 @@
 function _qtm:prompt:exitmean; argparse \
-	'content-color=?' \
-	'prefix=?' \
-	'suffix=?' \
-	'hide-ok' \
+	'content-color=*' 'prefix=*' \
+	'suffix=*' 'hide-ok' \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_content_color

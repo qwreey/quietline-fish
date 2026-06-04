@@ -1,9 +1,7 @@
 function _qtm:prompt:duration; argparse \
-	'content-color=?' \
-	'decimals=?' \
-	'threshold-ms=?' \
-	'prefix=?' \
-	'suffix=?' \
+	'content-color=*' 'decimals=*' \
+	'threshold-ms=*' 'prefix=*' \
+	'suffix=*' \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_content_color

@@ -1,5 +1,5 @@
 function _qtm:prompt:hostname; argparse --max-args 0 \
-	'content-color=?' 'topline-color=?' \
+	'content-color=*' 'topline-color=*' \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_topline_color
