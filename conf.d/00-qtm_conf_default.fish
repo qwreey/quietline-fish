@@ -81,14 +81,13 @@ function _qtm:on_init
 		_qtm:add_prompt (_qtm:prompt:git \
 			--content-color="$(set_color '#D2EC59')" \
 			--topline-color="$(set_color '#C7E155')" \
-			--lbrace="$_qtm_color_symbol_default"'['"$(set_color --reset)" \
+			--lbrace="$_qtm_color_symbol_default"'[' \
+			--rbrace="$_qtm_color_symbol_default"'] ' \
 			--lbrace_topcolor="$_qtm_color_topline_default" \
-			--rbrace="$_qtm_color_symbol_default"']'"$(set_color --reset)" \
 			--rbrace_topcolor="$_qtm_color_topline_default" \
 			--staged="+" --changed="!" --untracked="?" \
 			--behind="↓" --ahead="↑" --diverged="" \
 			--stashed="*" --conflicts="#"
 		)
-		_qtm:add_prompt (_qtm:prompt:symbol " ")
 	end
 end
