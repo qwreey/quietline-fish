@@ -2,7 +2,7 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 	'dirname-color=?' \
 	'slash-color=?' \
 	'topline-color=?' \
-	'short-length=?'
+	'short-length=?' \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_topline_color
