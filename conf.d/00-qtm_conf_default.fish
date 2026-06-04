@@ -27,8 +27,7 @@ function _qtm:on_init
 			--err-suffix=" " \
 			--ok-content="ok! " \
 			--hide-ok \
-			--status-joiner="|" \
-			--short-length=3
+			--status-joiner="|"
 		)
 		# Exit code explain
 		_qtm:add_prompt (_qtm:prompt:exitmean \
@@ -65,7 +64,8 @@ function _qtm:on_init
 		_qtm:add_prompt (_qtm:prompt:pwd \
 			--dirname-color="$(set_color --bold '#698eff')" \
 			--slash-color="$(set_color '#5373d4')" \
-			--topline-color="$(set_color '#5F5FFF')"
+			--topline-color="$(set_color '#5F5FFF')" \
+			--short-length=3
 		)
 		# Show nodejs version
 		_qtm:add_prompt (_qtm:prompt:node \
