@@ -10,7 +10,7 @@ function _qtm:put \
 		set content  $argv[1]
 		set topcolor $_qtm_color_topline_default
 	end
-	
+
 	# Skip empty
 	test -z $content
 	and return 0
