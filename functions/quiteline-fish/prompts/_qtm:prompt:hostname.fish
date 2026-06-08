@@ -21,10 +21,16 @@ function _qtm:prompt:hostname; argparse --max-args 0 \
 		else if test -n "$_qtm_var_hostnamecache"
 			set result "$_qtm_var_hostnamecache"
 		else if command --query hostname
-			set --global _qtm_var_hostnamecache (hostname -s)
+			set --global _qtm_var_hostnamecache (hostname)
 			set result "$_qtm_var_hostnamecache"
-		else if command --query hostnamectl
+		else if test -e /run/systemd/system && command --query hostnamectl
 			set --global _qtm_var_hostnamecache (hostnamectl --transient)
+			set result "$_qtm_var_hostnamecache"
+		else if test -e /etc/hostname
+			set --global _qtm_var_hostnamecache (cat /etc/hostname)
+			set result "$_qtm_var_hostnamecache"
+		else
+			set --global _qtm_var_hostnamecache ("*hostname-unset*")
 			set result "$_qtm_var_hostnamecache"
 		end
 
