@@ -1,4 +1,4 @@
-function _qtm_motdascii_rabit
+function _qtm_motdascii_rabbit
     echo "   (\__/)"
     echo "  ( >ω< )  $argv[1]"
     echo "  (     )  $argv[2]"
