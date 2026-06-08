@@ -3,6 +3,7 @@ function _qtm_init
 	set --query _qtm_inited
 	and return 0
 	set --global _qtm_inited
+	set --global fish_function_path (path resolve $__fish_config_dir/functions/quiteline-fish/**/) $fish_function_path
 
 	# registerd hooks
 	set --global _qtm_hook_render

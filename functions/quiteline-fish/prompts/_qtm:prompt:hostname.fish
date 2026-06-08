@@ -13,28 +13,7 @@ function _qtm:prompt:hostname; argparse --max-args 0 \
 
 	# Render result
 	function _qtm:prompt:hostname:render; $_qtm_nsenter
-		set -l result
-		if test -n "$_qtm_config_hostname_override"
-			set result "$_qtm_config_hostname_override"
-		else if test -n "$HOST"
-			set result "$HOST"
-		else if test -n "$_qtm_var_hostnamecache"
-			set result "$_qtm_var_hostnamecache"
-		else if command --query hostname
-			set --global _qtm_var_hostnamecache (hostname)
-			set result "$_qtm_var_hostnamecache"
-		else if test -e /run/systemd/system && command --query hostnamectl
-			set --global _qtm_var_hostnamecache (hostnamectl --transient)
-			set result "$_qtm_var_hostnamecache"
-		else if test -e /etc/hostname
-			set --global _qtm_var_hostnamecache (cat /etc/hostname)
-			set result "$_qtm_var_hostnamecache"
-		else
-			set --global _qtm_var_hostnamecache ("*hostname-unset*")
-			set result "$_qtm_var_hostnamecache"
-		end
-
 		_qtm:put "$_flag_topline_color" \
-			"$_flag_content_color$result$(set_color --reset)"
+			"$_flag_content_color$(_qtm_hostname)$(set_color --reset)"
 	end
 end

@@ -1,0 +1,8 @@
+function _qtm_motd_hostname; argparse --max-args 0 \
+	'color=*' \
+-- $argv
+	# Define default
+	set -q _flag_color || set -l _flag_color (set_color "#FAAC00")
+
+	echo $_flag_color(_qtm_hostname)(set_color --reset)
+end

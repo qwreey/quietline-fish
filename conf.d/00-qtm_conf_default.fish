@@ -90,4 +90,33 @@ function _qtm:on_init
 			--stashed="*" --conflicts="#"
 		)
 	end
+
+	# Motd
+	function _qtm:on_motd; _qtm_motd \
+		--charactor="cat" \
+		--line1=(
+			_qtm_motd_username \
+				--color=(set_color "#F80001")
+			echo "@"
+			_qtm_motd_hostname \
+				--color=(set_color "#FAAC00")
+			_qtm_motd_time \
+				--color=(set_color normal) \
+				--prefix=" $(set_color '#21b666')at " \
+				--dateformat="%a %b %H:%M %Z" \
+				--locale="en_US.UTF-8"
+		) \
+		--line2=(
+			_qtm_motd_uptime \
+				--color=(set_color normal) \
+				--prefix="$(set_color '#1D99F3')Uptime: "
+		) \
+		--line3=(
+			_qtm_motd_lastlogin \
+				--color=(set_color normal) \
+				--prefix="$(set_color '#9B59B6')Last Login: " \
+				--dateformat="%a %b %H:%M %Z" \
+				--locale="en_US.UTF-8"
+		)
+	end
 end

@@ -13,21 +13,7 @@ function _qtm:prompt:username; argparse --max-args 0 \
 
 	# Render result
 	function _qtm:prompt:username:render; $_qtm_nsenter
-		set -l result
-		if test -n "$_qtm_config_username_override"
-			set result "$_qtm_config_username_override"
-		else if test -n "$USER"
-			set result "$USER"
-		else if test -n "$USERNAME"
-			set result "$USERNAME"
-		else if test -n "$_qtm_var_usernamecache"
-			set result "$_qtm_var_usernamecache"
-		else if command --query whoami
-			set --global _qtm_var_usernamecache (whoami)
-			set result "$_qtm_var_usernamecache"
-		end
-
 		_qtm:put "$_flag_topline_color" \
-			"$_flag_content_color$result$(set_color --reset)"
+			"$_flag_content_color$(_qtm_username)$(set_color --reset)"
 	end
 end
