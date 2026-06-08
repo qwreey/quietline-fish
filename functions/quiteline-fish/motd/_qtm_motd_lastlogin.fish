@@ -4,7 +4,7 @@ function _qtm_motd_lastlogin; argparse --max-args 0 \
 	# Define default
 	set -q _flag_color || set -l _flag_color (set_color normal)
 	set -q _flag_prefix || set -l _flag_prefix "$(set_color '#9B59B6')Last Login: "
-	set -q _flag_dateformat || set -l _flag_dateformat "%a %b %e %H:%M %Z"
+	set -q _flag_dateformat || set -l _flag_dateformat "%a %b %H:%M %Z"
 	set -q _flag_locale || set -l _flag_locale "$LC_TIME"
 	test -z _flag_locale && set -l _flag_locale "en_US.UTF-8"
 
