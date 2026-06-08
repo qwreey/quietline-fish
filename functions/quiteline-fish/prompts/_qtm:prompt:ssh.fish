@@ -3,7 +3,7 @@ function _qtm:prompt:ssh; argparse --min-args 1 \
 -- $argv || return
 	# Flag defaults
 	set --query -l _flag_symbol
-	or set -l _flag_symbol "=> "
+	or set -l _flag_symbol "$(set_color "#BCD45C")=> "
 	set --query -l _flag_notsymbol
 	or set -l _flag_notsymbol ""
 

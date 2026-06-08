@@ -46,7 +46,7 @@ function _qtm:on_init
 		)
 		# Show ssh status
 		_qtm:add_prompt (_qtm:prompt:ssh \
-			--symbol="=> " --notsymbol ""
+			--symbol="$(set_color "#BCD45C")=> " --notsymbol ""
 		)
 		# Show username
 		_qtm:add_prompt (_qtm:prompt:username \
