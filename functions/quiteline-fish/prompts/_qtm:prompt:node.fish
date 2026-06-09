@@ -18,7 +18,7 @@ function _qtm:prompt:node; argparse --max-args 0 \
 
 	# Render result
 	function _qtm:prompt:node:render; $_qtm_nsenter
-		if path is $_qtm_pwd_parent_dirs/package.json
+		if command -q node && path is $_qtm_pwd_parent_dirs/package.json
 			set -l node_version (node --version | string match -r "v(?<v>.*)")
 			_qtm:put "$_flag_topline_color" \
 				"$_flag_content_color$_flag_prefix$node_version[2]$_flag_suffix"
