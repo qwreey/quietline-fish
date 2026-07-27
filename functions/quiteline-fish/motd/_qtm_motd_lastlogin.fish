@@ -9,7 +9,7 @@ function _qtm_motd_lastlogin; argparse --max-args 0 \
 	test -z _flag_locale && set -l _flag_locale "en_US.UTF-8"
 
 	command -q last
-	and set -l last_timeiso (string match -rg '(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})' (last -n 1 --time-format=iso $USER)[1])
+	and set -l last_timeiso (string match -rg -- '(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})' (last -n 1 --time-format=iso $USER)[1])
 	or set -l last_timeiso (date -Iseconds)
 	set -l formatted (LC_TIME="$_flag_locale" date -d $last_timeiso "+$_flag_dateformat")
 

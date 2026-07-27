@@ -1,0 +1,3 @@
+- [ ] Show distrobox status
+- [ ] Show venv status (check required)
+- [ ] Show vim status

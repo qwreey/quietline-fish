@@ -8,7 +8,7 @@ function _qtm:ns_capture \
 			'e/execute=?' \
 		-- $argv || return
 		for vardefine in $_flag_var
-			set -l split (string split -m1 '=' "$vardefine")
+			set -l split (string split -m1 -- '=' "$vardefine")
 
 			test (count $split) = 1
 			and set -l value "$$split[1]"
@@ -30,7 +30,7 @@ function _qtm:ns_capture \
 		# Capture _flag
 		set -l flag_names (
 			set --names --local |
-			string match -r '^_flag_.*'
+			string match -r -- '^_flag_.*'
 		)
 		set -l flag_setter ""
 		for flag in $flag_names

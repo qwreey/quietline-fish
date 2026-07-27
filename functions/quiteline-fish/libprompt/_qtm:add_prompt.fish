@@ -6,9 +6,9 @@ function _qtm:add_prompt
 	set -l on_prompt
 
 	for i in (seq 1 (count $argv))
-		set -l kv (string split -m1 "=" $argv[$i])
-		set -l k (string trim $kv[1])
-		set -l v $kv[2]
+		set -l kv (string split -m1 -- "=" $argv[$i])
+		set -l k (string trim -- "$kv[1]")
+		set -l v "$kv[2]"
 
 		switch $k
 			case name; set name $v

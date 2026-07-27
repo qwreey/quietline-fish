@@ -36,7 +36,7 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 	end
 
 	function _qtm:prompt:pwd:homecut
-		string replace (echo "$HOME" | string escape --style=regex) "/~" "$argv[1]"
+		string replace -- (echo "$HOME" | string escape --style=regex) "/~" "$argv[1]"
 	end
 
 	function _qtm:prompt:pwd:on_pwd; $_qtm_nsenter
@@ -44,7 +44,7 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 
 		# Pwd cut home path
 		set -l homecut_pwd (_qtm:prompt:pwd:homecut "$PWD")
-		set -l path_split (string split '/' "$homecut_pwd")
+		set -l path_split (string split -- '/' "$homecut_pwd")
 		set -l path_depth (count $path_split)
 		test "$path_split[2]" = '~'
 		and set -l path_inhome 1
@@ -56,8 +56,8 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 		set -l git_root_inhome
 		if test -n "$git_root"
 			set git_root "$(_qtm:prompt:pwd:homecut "$git_root")"
-			set git_root_depth (count (string match -ar '/' "$git_root"))
-			string match -q -r '^/~/' "$git_root"
+			set git_root_depth (count (string match -ar -- '/' "$git_root"))
+			string match -qr -- '^/~/' "$git_root"
 			and set git_root_inhome 1
 			or set git_root_inhome 0
 		else
@@ -76,12 +76,12 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 				set current "$path_split[$i]"
 			else if test $_flag_short_length = 1
 				# Push one char short name, but if starts with . show two char
-				set -l short "$(string sub --length 1 "$path_split[$i]")"
+				set -l short "$(string sub --length 1 -- "$path_split[$i]")"
 				test "$short" = '.'
-				and set -l short "$(string sub --length 2 "$path_split[$i]")"
+				and set -l short "$(string sub --length 2 -- "$path_split[$i]")"
 				set current "$short"
 			else
-				set current "$(string sub --length $_flag_short_length "$path_split[$i]")"
+				set current "$(string sub --length $_flag_short_length -- "$path_split[$i]")"
 			end
 
 			# Push without / if ~ home sign

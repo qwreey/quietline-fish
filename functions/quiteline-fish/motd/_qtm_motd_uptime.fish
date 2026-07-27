@@ -5,7 +5,12 @@ function _qtm_motd_uptime; argparse --max-args 0 \
 	set -q _flag_color || set -l _flag_color (set_color normal)
 	set -q _flag_prefix || set -l _flag_prefix "$(set_color '#1D99F3')Uptime: "
 
-	set -l uptime (uptime -p | string replace 'up ' '')
+	set -l uptime
+	if command -q uptime
+		set uptime (command uptime -p | string replace -- 'up ' '')
+	else
+		set uptime 'unknown'
+	end
 
 	echo "$_flag_prefix"(set_color --reset)"$_flag_color"$uptime(set_color --reset)
 end

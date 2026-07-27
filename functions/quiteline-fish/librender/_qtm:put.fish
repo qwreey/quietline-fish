@@ -23,5 +23,5 @@ function _qtm:put \
 
 	set _qtm_var_content "$_qtm_var_content$content"
 	set _qtm_var_curr_toplen \
-		(math $_qtm_var_curr_toplen + (string length --visible $content))
+		(math $_qtm_var_curr_toplen + (string length --visible -- "$content"))
 end

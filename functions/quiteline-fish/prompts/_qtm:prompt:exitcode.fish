@@ -40,7 +40,7 @@ function _qtm:prompt:exitcode; argparse \
 		end
 
 		# Show error numbers
-		set -l joined "$(string join "$_flag_status_joiner" $_qtm_last_pipestatus)"
+		set -l joined "$(string join -- "$_flag_status_joiner" $_qtm_last_pipestatus)"
 		_qtm:put_result \
 			"$_flag_content_color$_flag_err_prefix$joined$_flag_err_suffix$(set_color --reset)"
 	end

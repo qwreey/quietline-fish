@@ -2,12 +2,12 @@
 function _qtm_parent_dirs
 	set -l parts ''
 	echo '/'
-	string escape (
-		for dir in (string split / -- "$argv[1]")
+	string escape -- (
+		for dir in (string split -- / "$argv[1]")
 			test -z "$dir"
 			and continue
 			set -a parts "$dir"
-			string join / -- $parts
+			string join -- / $parts
 		end
 	)
 end

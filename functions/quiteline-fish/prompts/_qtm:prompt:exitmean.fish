@@ -37,7 +37,7 @@ function _qtm:prompt:exitmean; argparse \
 			case 141; echo -n 'Pipe error'
 			case 142; echo -n 'Alarm'
 			case 143; echo -n 'Terminated'
-			case *; return 1
+			case "*"; return 1
 		end
 	end
 

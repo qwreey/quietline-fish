@@ -27,12 +27,12 @@ function _qtm_git_info \
 	end
 
 	# 브랜치 트래킹 정보 처리 (첫 번째 줄)
-	if set -q lines[1]; and string match -q -r '^## [^ ]+ \[(.*)\]' $lines[1]
-		set -l match_str (string match -r '^## [^ ]+ \[(.*)\]' $lines[1])[2]
-		set -l items (string split ',' $match_str)
+	if set -q lines[1]; and string match -qr -- '^## [^ ]+ \[(.*)\]' $lines[1]
+		set -l match_str (string match -r -- '^## [^ ]+ \[(.*)\]' $lines[1])[2]
+		set -l items (string split -- ',' $match_str)
 		
 		for item in $items
-			set -l parts (string match -r '(behind|ahead|diverged) ([0-9]+)?' $item)
+			set -l parts (string match -r -- '(behind|ahead|diverged) ([0-9]+)?' $item)
 			if set -q parts[2]
 				set -l num 0
 				if set -q parts[3]; and test -n "$parts[3]"
@@ -53,18 +53,18 @@ function _qtm_git_info \
 
 	# 상태 정보 처리
 	for line in $lines
-		if string match -q -r '^##|^!!' $line
+		if string match -qr -- '^##|^!!' $line
 			continue
-		else if string match -q -r '^U[ADU]|^[AD]U|^AA|^DD' $line
+		else if string match -qr -- '^U[ADU]|^[AD]U|^AA|^DD' $line
 			set count_conflicts (math $count_conflicts + 1)
-		else if string match -q -r '^\?\?' $line
+		else if string match -qr -- '^\?\?' $line
 			set count_untracked (math $count_untracked + 1)
-		else if string match -q -r '^[MTARC][MTD]' $line
+		else if string match -qr -- '^[MTARC][MTD]' $line
 			set count_staged (math $count_staged + 1)
 			set count_changed (math $count_changed + 1)
-		else if string match -q -r '^[MTADRC] ' $line
+		else if string match -qr -- '^[MTADRC] ' $line
 			set count_staged (math $count_staged + 1)
-		else if string match -q -r '^ [MTADRC]' $line
+		else if string match -qr -- '^ [MTADRC]' $line
 			set count_changed (math $count_changed + 1)
 		end
 	end

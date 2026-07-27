@@ -93,7 +93,7 @@ function _qtm:on_init
 
 	# Motd
 	function _qtm:on_motd; _qtm_motd \
-		--charactor="cat" --charactor="rabbit" \
+		--character="cat" --character="rabbit" \
 		--line1=(
 			_qtm_motd_username \
 				--color=(set_color "#F80001")

@@ -79,7 +79,7 @@ function _qtm:prompt:git; argparse --max-args 0 \
 		test -z $$_qtm_var_git_result
 		and return 0
 
-		set -l infos (string split " " $$_qtm_var_git_result)
+		set -l infos (string split -- " " $$_qtm_var_git_result)
 		set -l branch $infos[1]
 
 		_qtm:put $_flag_lbrace_topcolor $_flag_lbrace
