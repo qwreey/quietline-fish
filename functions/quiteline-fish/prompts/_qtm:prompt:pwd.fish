@@ -36,7 +36,7 @@ function _qtm:prompt:pwd; argparse --max-args 0 \
 	end
 
 	function _qtm:prompt:pwd:homecut
-		string replace -- (echo "$HOME" | string escape --style=regex) "/~" "$argv[1]"
+		string replace --regex -- "^$(echo "$HOME" | string escape --style=regex)" "/~" "$argv[1]"
 	end
 
 	function _qtm:prompt:pwd:on_pwd; $_qtm_nsenter
